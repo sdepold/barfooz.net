@@ -1,0 +1,34 @@
+import {extractHeadlines} from './helper';
+
+$ {
+  let html;
+  input.content.renderBody({ w: (h) => { html = h; } });
+}
+
+style.less {
+  .site-navigation {
+    display: inline-block;
+    float: left;
+    width: 200px;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}
+
+<div.site-navigation>
+  <ul>
+    <li for(headline in extractHeadlines(html))>
+      <a href="${headline.ref}">
+        ${headline.text}
+      </a>
+    </li>
+  </ul>
+</div>

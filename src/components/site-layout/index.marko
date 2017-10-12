@@ -5,30 +5,36 @@ $ {
     { title: 'feedr', path: '/feedr' }
   ]
 }
-
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>barfooz.net | ${input.title}/></title>
-    <script src="https://use.fontawesome.com/afec370c56.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>barfooz.net | ${input.title}</title>
+    <script src="https://use.fontawesome.com/afec370c56.js"/>
   </head>
   <body>
     <header>
       <h1>
-        <i.fa.fae-footprint />
+        <i.fa.fae-footprint/>
         barfooz<span>.net</span>
       </h1>
       <nav.menu>
-        <a class={active: input.title === item.title} href=item.path for(item in menu)>${item.title}</a>
+        <a class={active: input.title === item.title} href=item.path for(item in menu)>
+          ${item.title}
+        </a>
       </nav>
     </header>
-    <div.content>
-      <include(input.content)/>
+    <div.main>
+      <site-navigation content=input.content />
+      <div.content>
+        <include(input.content)/>
+      </div>
     </div>
     <footer>
-      Implemented with <i.fa.fa-heart /> by
+      Implemented with
+      <i.fa.fa-heart/>
+      by
       <a href="http://depold.com" target="_blank">Sascha Depold</a>
     </footer>
   </body>
