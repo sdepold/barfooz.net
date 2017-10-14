@@ -1,0 +1,35 @@
+import {extractHeadlines} from './helper';
+
+$ {
+  let html;
+  input.content.renderBody({ w: (h) => { html = h; } });
+
+  const menu = [
+    { icon: 'home', title: 'Home', path: '/' },
+    { icon: 'rss', title: 'jquery.rss', path: '/jquery-rss' },
+    { icon: 'file-text', title: 'feedr', path: '/feedr' }
+  ];
+  const headlines = extractHeadlines(html);
+}
+
+style.less {
+  ul.sidebar-ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #253A5B;
+  }
+
+  ul.sidebar-menu {
+    &:extend(ul.sidebar-ul);
+    margin: 50px 0 0 0;
+  }
+}
+
+<ul.sidebar-menu>
+  <sidebar-menu-item 
+    for(menuItem in menu)
+    active=(input.title === menuItem.title)
+    headlines=headlines
+    menuItem=menuItem
+  />
+</ul>

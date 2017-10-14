@@ -1,10 +1,3 @@
-$ {
-  const menu = [
-    { title: 'Home', path: '/' },
-    { title: 'jquery.rss', path: '/jquery-rss' },
-    { title: 'feedr', path: '/feedr' }
-  ]
-}
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -14,28 +7,10 @@ $ {
     <script src="https://use.fontawesome.com/afec370c56.js"/>
   </head>
   <body>
-    <header>
-      <h1>
-        <i.fa.fae-footprint/>
-        barfooz<span>.net</span>
-      </h1>
-      <nav.menu>
-        <a class={active: input.title === item.title} href=item.path for(item in menu)>
-          ${item.title}
-        </a>
-      </nav>
-    </header>
+    <sidebar content=input.content title=input.title />
     <div.main>
-      <site-navigation content=input.content />
-      <div.content>
-        <include(input.content)/>
-      </div>
+      <include(input.content)/>
     </div>
-    <footer>
-      Implemented with
-      <i.fa.fa-heart/>
-      by
-      <a href="http://depold.com" target="_blank">Sascha Depold</a>
-    </footer>
+    <script src="../../static/javascripts/prism.js" />
   </body>
 </html>

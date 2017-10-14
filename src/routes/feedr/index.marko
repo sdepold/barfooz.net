@@ -16,11 +16,11 @@
         Feedr has to be requested with the query parameterqthat contains the URL of the to-be-parsed
         RSS/Atom feed. An example request looks like this:
       </p>
-      <code>
-        curl 'http://www.feedrapp.info/?q=http://www.ebaytechblog.com/feed/'
-      </code>
+      <pre><code.language-bash>
+          curl 'http://www.feedrapp.info/?q=http://www.ebaytechblog.com/feed/'
+      </code></pre>
       <p>The result will look like this (please note that the output is slightly truncated):</p>
-      <code>
+      <pre><code.language-json>
         {
           "responseStatus": 200,
           "responseDetails": null,
@@ -50,7 +50,7 @@
             }
           }
         }
-      </code>
+      </code></pre>
     </section>
 
     <section>
@@ -79,24 +79,24 @@
     <section>
       <h2#development>Development</h2>
       <p>In order to run the app locally, you can execute the following steps:</p>
-      <code>
+      <pre><code.language-bash>
         git clone git@github.com:sdepold/feedrapp.git
         cd feedrapp
         yarn
         yarn start
-      </code>
+      </code></pre>
       <p>The app will now start on port 8080 and can be queried like this:</p>
-      <code>
+      <pre><code.language-bash>
         curl http://localhost:8080/?q=http://www.ebaytechblog.com/feed/
-      </code>
+      </code></pre>
       <p>
         The easiest way to get your own dedicated version of feedrapp is probably via Heroku:
       </p>
-      <code>
+      <pre><code.language-bash>
         heroku create
         git push heroku master
         heroku open
-      </code>
+      </code></pre>
     </section>
 
     <section>

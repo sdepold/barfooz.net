@@ -1,4 +1,7 @@
-@import "../../static/font-awesome-extension.css";
+@import "../../static/styles/font-awesome-extension.css";
+@import "../../static/styles/prism.css";
+
+html, body { height: 100%; }
 
 body {
   font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -16,66 +19,6 @@ a {
   &:hover {
     text-decoration:underline;
   }
-}
-
-header {
-  padding:2em 100px;
-  background: #494D55;
-  border-top: 5px solid #75c181;
-  color: white;
-
-  h1 {
-    font-size: 28px;
-    text-transform: uppercase;
-    color: #75c181;
-    display: inline-block;
-
-    span {
-      color: white;
-      font-weight: 500;
-    }
-  }
-
-  p.sub-header {
-    margin: 0;
-  }
-
-  nav.menu {
-    display: inline-block;
-    float: right;
-
-    a {
-      color: #75c181;
-      display:inline-block;
-      padding:0.5em 1em;
-
-      &.active {
-        color: white;
-      }
-    }
-  }
-}
-
-footer {
-  display: block;
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  background: #494D55;
-  text-align: center;
-  font-size: 85%;
-  color: #75c181;
-  padding: 10px;
-
-  .fa, a {
-    color: white;
-  }
-}
-
-img.logo {
-  width:160px;
-  height:88px;
-  margin-bottom:1em;
 }
 
 h1 {
@@ -101,23 +44,7 @@ p {
   line-height:1.6;
 }
 
-.content {
+.main {
   padding:1em 2em;
-  max-width:30em;
-  margin:auto;
-}
-
-code {
-  color:#d03;
-  background-color:#f9f9f9;
-  padding:0.1em 0.4em;
-  border:1px solid #e5e5e5;
-  border-radius:0.15em;
-  display:inline-block;
-
-}
-
-pre code {
-  display:block;
-  color:#396;
+  margin-left: 300px;
 }
