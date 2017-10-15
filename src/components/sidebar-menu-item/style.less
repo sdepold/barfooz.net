@@ -1,4 +1,6 @@
 li.sidebar-menu-item {
+    border-bottom: 1px solid #354E6D;
+
     ul.sidebar-submenu {
         &:extend(ul.sidebar-ul);
         margin: 0;
@@ -13,22 +15,26 @@ li.sidebar-menu-item {
         }
     }
 
-    &.active {
+    &.active, &:hover {
         >a {
             background-color: #354E6D;
             color: #eee;
+            position: relative;
 
-            &::before {
-                content: '';
-                width: 10px;
-                height: 10px;
-                background-color: #354E6D;
-                transform: rotate(45deg);
-                position: relative;
-                top: 50px;
-                display: block;
-                left: 2px;
-            }
+            
+        }
+    }
+
+    &.active {
+        >a::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #354E6D;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 65px;
+            display: block;
         }
     }
 
