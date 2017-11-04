@@ -1,14 +1,9 @@
 import {extractHeadlines} from './helper';
+import sections from '../../sections';
 
 $ {
   let html;
   input.content.renderBody({ w: (h) => { html = h; } });
-
-  const menu = [
-    { icon: 'home', title: 'Home', path: '/' },
-    { icon: 'rss', title: 'jquery.rss', path: '/jquery-rss' },
-    { icon: 'file-text', title: 'feedr', path: '/feedr' }
-  ];
   const headlines = extractHeadlines(html);
 }
 
@@ -27,7 +22,7 @@ style.less {
 
 <ul.sidebar-menu>
   <sidebar-menu-item 
-    for(menuItem in menu)
+    for(menuItem in sections)
     active=(input.title === menuItem.title)
     headlines=headlines
     menuItem=menuItem

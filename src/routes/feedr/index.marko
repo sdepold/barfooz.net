@@ -1,7 +1,7 @@
 <site-layout title='feedr'>
   <@content>
     <section>
-      <h2#introduction>Introduction</h2>
+      <h3#introduction>Introduction</h3>
       <p>
         Feedr is a service for parsing RSS and Atom feeds. You just pass the URL of an
         RSS/Atom feed and the service will return the parsed feed as JSON. Feedr was originally
@@ -11,7 +11,7 @@
     </section>
 
     <section>
-      <h2#usage>Usage</h2>
+      <h3#usage>Usage</h3>
       <p>
         Feedr has to be requested with the query parameterqthat contains the URL of the to-be-parsed
         RSS/Atom feed. An example request looks like this:
@@ -54,7 +54,7 @@
     </section>
 
     <section>
-      <h2#options>Options</h2>
+      <h3#options>Options</h3>
       <p>In addition to the<code>q</code>parameter, Feedr supports other optional parameters.</p>
       <table class="table">
         <thead>
@@ -77,7 +77,7 @@
     </section>
 
     <section>
-      <h2#development>Development</h2>
+      <h3#development>Development</h3>
       <p>In order to run the app locally, you can execute the following steps:</p>
       <pre><code.language-bash>
         git clone git@github.com:sdepold/feedrapp.git
@@ -100,7 +100,7 @@
     </section>
 
     <section>
-      <h2#caching>Caching</h2>
+      <h3#caching>Caching</h3>
       <p>
         Since v1.5.0 every requested RSS feed is cached for 30 minutes. This value might be configurable
         in the future. Pull requests are welcome. The change was introduced because the app received too

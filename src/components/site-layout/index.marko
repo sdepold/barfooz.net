@@ -1,14 +1,21 @@
+import sections from '../../sections';
+
+$ const section = sections.find((section) => section.title === input.title);
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>barfooz.net | ${input.title}</title>
+    <title>barfooz.net | ${section.title}</title>
     <script src="https://use.fontawesome.com/afec370c56.js"/>
   </head>
   <body>
     <sidebar content=input.content title=input.title />
     <div.main>
+      <h2.title if(!section.skipHeadline)>
+        <i.fa class=((`fa-${section.icon}`))/> ${section.title}
+      </h2>
       <include(input.content)/>
     </div>
     <script src="../../static/javascripts/prism.js" />

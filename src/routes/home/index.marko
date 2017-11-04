@@ -1,0 +1,14 @@
+import sections from '../../sections';
+
+<site-layout title='Home'>
+  <@content>
+    <h2>bla bla</h2>
+
+    <section>
+        <div for(section in sections) if(section.title !== 'Home')>
+            <h3><i.fa class=((`fa-${section.icon}`))/> ${section.title}</h3>
+            <p>${section.description}</p>
+        </div>
+    </section>
+  </@content>
+</site-layout>
