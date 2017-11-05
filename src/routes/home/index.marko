@@ -8,11 +8,15 @@ style.less {
 
     h3 {
       background: #364F6C;
-      color: #ddd;
       display: inline-block;
       margin-bottom: 0;
-      padding: 0.5em;
       font-size: 1em;
+
+      a {
+        color: #ddd;
+        padding: 0.5em;
+        display: block;
+      }
     }
 
     > div {
@@ -36,7 +40,11 @@ style.less {
 
     <section>
       <div.section for(section in relevantSections) style={width: `${100 / relevantSections.length}%`}>
-        <h3><i.fa class=((`fa-${section.icon}`))/> ${section.title}</h3>
+        <h3>
+          <a href=section.path>
+            <i.fa class=((`fa-${section.icon}`))/> ${section.title}
+          </a>
+        </h3>
         <div>
           <p>${section.description}</p>
         </div>
