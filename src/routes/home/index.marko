@@ -1,14 +1,46 @@
 import sections from '../../sections';
 
+$ const relevantSections = sections.filter((s) => s.renderOnHome !== false)
+
+style.less {
+  .section {
+    display: inline-block;
+
+    h3 {
+      background: #364F6C;
+      color: #ddd;
+      display: inline-block;
+      margin-bottom: 0;
+      padding: 0.5em;
+      font-size: 1em;
+    }
+
+    > div {
+      border: 1px solid #364F6C;
+      margin-right: 1em;
+      padding: 0.5em;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
 <site-layout title='Home'>
   <@content>
-    <h2>bla bla</h2>
 
     <section>
-        <div for(section in sections) if(section.title !== 'Home')>
-            <h3><i.fa class=((`fa-${section.icon}`))/> ${section.title}</h3>
-            <p>${section.description}</p>
+      <p>some teaser content</p>
+    </section>
+
+    <section>
+      <div.section for(section in relevantSections) style={width: `${100 / relevantSections.length}%`}>
+        <h3><i.fa class=((`fa-${section.icon}`))/> ${section.title}</h3>
+        <div>
+          <p>${section.description}</p>
         </div>
+      </div>
     </section>
   </@content>
 </site-layout>
