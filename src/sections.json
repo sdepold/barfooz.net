@@ -19,5 +19,11 @@
         "links": [
             { "text": "Github", "href": "https://github.com/sdepold/feedrapp", "target": "_blank" }
         ]
+    },
+    {
+        "title": "Imprint",
+        "path": "/imprint",
+        "renderInSidebar": false,
+        "renderOnHome": false
     }
 ]

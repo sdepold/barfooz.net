@@ -1,6 +1,6 @@
 $ const menuItem = input.menuItem;
 
-<li.sidebar-menu-item class={active: input.active}>
+<li.sidebar-menu-item class={active: input.active} if(menuItem.renderInSidebar !== false)>
   <a href="${menuItem.path}">
     <i.fa class=((`fa-${menuItem.icon}`))/>${menuItem.title}
   </a>
