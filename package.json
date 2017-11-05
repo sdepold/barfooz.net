@@ -16,6 +16,7 @@
     "marko-starter": "^1.0.0"
   },
   "scripts": {
+    "clean": "rm -rf ./.cache",
     "start": "marko-starter server",
     "build": "NODE_ENV=production marko-starter build",
     "serve-static": "NODE_ENV=production marko-starter serve-static",
