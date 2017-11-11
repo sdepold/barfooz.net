@@ -1,13 +1,193 @@
-<site-layout title='Release Tools'>
+<site-layout title="Release Tools">
   <@content>
     <section>
       <h3#introduction>Introduction</h3>
       <p>
-        Feedr is a service for parsing RSS and Atom feeds. You just pass the URL of an
-        RSS/Atom feed and the service will return the parsed feed as JSON. Feedr was originally
-        designed as a drop-in replacement for Google's Feed API, which has been deprecated and
-        taken offline on December 15th, 2016.
+        A tiny collection of release helpers that will help you bumping and publishing your
+        package without too much hassles.
       </p>
+      <p>
+        The projects ships a bunch of source code that gets used by very thin CLI wrappers.
+        This way it is possible to actually use the sources independently from the command
+        line, which can be handy if you want to integrate the logic into your own work flow.
+      </p>
+    </section>
+    <section>
+      <h3#installation>Installation</h3>
+      <pre><code.language-bash>
+        npm install -g release-tools
+      </code></pre>
+    </section>
+    <section>
+      <h3#executables>Executables</h3>
+      <p>
+        Right now this project is very
+        <code>npm</code>
+        focussed but could in theory be used with every other dependency management tool as well.
+      </p>
+      <h4>npm_bump</h4>
+      <p>
+        The
+        <code>npm_bump</code>
+        command is doing the following steps:
+        <ul>
+          <li>
+            It checks if your project contains a
+            <code>CHANGELOG.md</code>
+            file.
+          </li>
+          <li>
+            If there is a changelog, it will check if the changelog contains the needle
+            <code>## Upcoming</code>
+            and replaces it with the new version and the current timestamp.
+          </li>
+          <li>
+            If there is a changelog, it will commit the changes in changelog with the commit message
+            <code>Add changes in version: v{version}</code>.
+          </li>
+          <li>
+            It will now run
+            <code>npm version</code>
+            (which sets the version of your package.json to the new value), commit the change with the commit message
+            <code>Bump to version: v{version}</code>
+            and finally create a tag for the new version á la
+            <code>v{version}</code>.
+          </li>
+          <li>Finally it pushes your changes and your tags to the remote server (via git).</li>
+        </ul>
+      </p>
+      <p>
+        <h5>Usage</h5>
+        <pre><code.language-bash>
+          npm_bump 1.2.3    # Usage with a fixed version
+          npm_bump --bugfix # Usage with options
+        </code></pre>
+        <h5>Options</h5>
+        <ul>
+          <li>
+            <code>--bugfix</code>,
+            <code>--patch</code>
+            increases the third fragment of the version string (e.g. 1.2.3 to 1.2.4)
+          </li>
+          <li>
+            <code>--minor</code>
+            increases the second fragment of the version string and sets the third fragment to 0 (e.g. 1.2.3 to 1.3.0)
+          </li>
+          <li>
+            <code>--major</code>
+            increases the first fragment of the version string and sets the second and third fragment to 0 (e.g. 1.2.3 to 2.0.0)
+          </li>
+          <li>
+            <code>--skip-push</code>
+            will disable the pushing to the remote git server
+          </li>
+          <li>
+            <code>--auto</code>
+            enables automatic version detection. See below for more information
+          </li>
+          <li>
+            <code>--auto-fallback</code>
+            defines the to-be-bumped fragment in case of failing
+            <code>auto</code>
+            detection
+          </li>
+        </ul>
+      </p>
+      <h4>npm_release</h4>
+      <p>
+        The
+        <code>npm_release</code>
+        command is doing the following steps:
+        <ul>
+          <li>
+            Call
+            <code>npm_bump</code>. See the above steps.
+          </li>
+          <li>
+            Release the package to npm via
+            <code>npm publish</code>.
+          </li>
+        </ul>
+      </p>
+    </section>
+    <section>
+      <h3#change-detection>Auto detection</h3>
+      <p>
+        The flag
+        <code>--auto</code>
+        will parse the commits since the last git tag and checks the
+               subject and the body of the commit messages for some specific markers:
+        <ul>
+          <li>
+            <code>[major]</code>
+            will generate a major version bump
+          </li>
+          <li>
+            <code>[minor]</code>,
+            <code>[feature]</code>
+            will generate a minor version bump
+          </li>
+          <li>
+            <code>[patch]</code>,
+            <code>[bugfix]</code>,
+            <code>[fix]</code>
+            will generate a patch version bump
+          </li>
+        </ul>
+        If no change type is detected – because the markers are missing – you can also
+        specify a fallback type which is picked up in such cases:
+        <pre><code.language-bash>
+          npm_release --auto --auto-fallback minor
+        </code></pre>
+        This will bump the minor version in case no marker has been found.
+      </p>
+      <h4>Example</h4>
+      <p>
+        Let's assume your lib is currently on version 1.0.0 (aka the package.json contains that particular version number and a git tag
+        <code>v1.0.0</code>
+        exists). You now commit with the following messages:
+      </p>
+      <pre><code.language-bash>
+        [feature] Add new functionality
+        [patch] Fix readme
+      </code></pre>
+      <p>
+        If you run
+        <code>npm_release --auto</code>
+        now, it will bump the second version fragment aka set the version to
+        <code>1.1.0</code>. This happens because of the
+        <code>[feature]</code>
+        in one of the git commit message.
+      </p>
+    </section>
+    <section>
+      <h3>Exported functions</h3>
+      <h4>npm.bump</h4>
+      <p>
+        This function is called by
+        <code>npm_bump</code>
+        and expects an object as first parameter:
+      </p>
+      <pre><code.language-javascript>
+        var releaseTools = require('release-tools');
+
+        releaseTools.npm.bump({ version: '1.2.3' }); // Change version to a specific value.
+        releaseTools.npm.bump({ bugfix: true });     // Change version to next bugfix version.
+        releaseTools.npm.bump({ minor: true });      // change version to next minor release.
+        releaseTools.npm.bump({ major: true });      // Change version to next major release.
+      </code></pre>
+      <h4>npm.release</h4>
+      <p>
+        This function is called by
+        <code>npm_release</code>
+        and expects an object as first parameter:
+      </p>
+      <pre><code.language-javascript>
+        releaseTools.npm.release({ version: '1.2.3' }); // Change version to a specific value.
+        releaseTools.npm.release({ bugfix: true });     // Change version to next bugfix version.
+        releaseTools.npm.release({ minor: true });      // change version to next minor release.
+        releaseTools.npm.release({ major: true });      // Change version to next major release.
+      </code></pre>
     </section>
   </@content>
 </site-layout>

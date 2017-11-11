@@ -2,7 +2,7 @@ const helper = module.exports = {
   extractHeadlines: (html) => {
     return (html.match(/<h(\d).*?>(.*?)<\/h\d>/g) || []).map((header) => {
       const match = header.match(/<h(\d)(.*?)>(.*?)<\/h\d>/)
-      return { level: match[1], ref: helper.extractId(match[2]), text: match[3] };
+      return { level: parseInt(match[1]), ref: helper.extractId(match[2]), text: match[3] };
     });
   },
 

@@ -1,11 +1,10 @@
 $ const menuItem = input.menuItem;
-
 <li.sidebar-menu-item class={active: input.active} if(menuItem.renderInSidebar !== false)>
   <a href="${menuItem.path}">
-    <i.fa class=((`fa-${menuItem.icon}`))/>${menuItem.title}
+    <i.fa class=`fa-${menuItem.icon}`/>${menuItem.title}
   </a>
   <ul.sidebar-submenu if(input.active)>
-    <li.sidebar-submenu-item for(headline in input.headlines)>
+    <li.sidebar-submenu-item for(headline in input.headlines) if(headline.level === 3)>
       <a href="${headline.ref}">${headline.text}</a>
     </li>
   </ul>
