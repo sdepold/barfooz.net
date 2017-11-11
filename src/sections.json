@@ -9,7 +9,10 @@
         "icon": "rss",
         "title": "jquery.rss",
         "path": "/jquery-rss",
-        "description": "Feedr is a service for parsing RSS and Atom feeds. You just pass the URL of an RSS/Atom feed and the service will return the parsed feed as JSON. Feedr was originally designed as a drop-in replacement for Google's Feed API, which has been deprecated and taken offline on December 15th, 2016."
+        "description": "Feedr is a service for parsing RSS and Atom feeds. You just pass the URL of an RSS/Atom feed and the service will return the parsed feed as JSON. Feedr was originally designed as a drop-in replacement for Google's Feed API, which has been deprecated and taken offline on December 15th, 2016.",
+        "links": [
+            { "text": "Github", "href": "https://github.com/sdepold/jquery-rss", "target": "_blank" }
+        ]
     },
     {
         "icon": "file-text",
@@ -25,5 +28,14 @@
         "path": "/imprint",
         "renderInSidebar": false,
         "renderOnHome": false
+    },
+    {
+        "icon": "archive",
+        "title": "Release Tools",
+        "path": "/release-tools",
+        "description": "test",
+        "links": [
+            { "text": "Github", "href": "https://github.com/sdepold/release-tools", "target": "_blank" }
+        ]
     }
 ]
