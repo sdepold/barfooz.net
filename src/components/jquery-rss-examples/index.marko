@@ -1,0 +1,77 @@
+<macro example(title, description, code)>
+  <div id=`${title.toLowerCase().replace(/\s/g, '-')}-example`>
+    <h4>${title}</h4>
+    <p>${description}</p>
+    <pre><code.language-js>${code}</code></pre>
+    <div.jquery-rss-example id=title.toLowerCase().replace(/\s/g, '-') />
+    <script>jQuery(function($) { 
+      ${code}
+    });</script>
+  </div>
+</macro>
+
+<script src="https://code.jquery.com/jquery-1.6.4.js"></script>
+<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+<script src="https://cdn.rawgit.com/sdepold/jquery-rss/master/dist/jquery.rss.min.js"></script>
+<script src="https://cdn.rawgit.com/timrwood/moment/1.7.2/min/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+style.less {
+  .jquery-rss-examples {
+    .jquery-rss-example {
+      border: 1px solid #ddd;
+    }
+
+    #accordion {
+      font-size: 62.5%;
+      padding: 1em;
+    }
+  }
+}
+
+<div.jquery-rss-examples>
+  $ const accordionCode = `
+    $("#accordion")
+      .hide()
+      .rss("http://feeds.feedburner.com/dawanda", {
+        limit: 5,
+        effect: 'slideFastSynced',
+        layoutTemplate: '{entries}',
+        entryTemplate: '<h3>{title}</h3><div><p>{bodyPlain}</p></div>',
+        error: console.log
+      }, function() {
+        $("#accordion")
+          .show()
+          .accordion({ heightStyle: 'content' });
+      });
+  `;
+  <example('Accordion', 'test', accordionCode) />
+
+  $ const customDateFormatCode = `
+    $("#custom-date-format").rss("http://feeds.feedburner.com/dawanda", {
+      entryTemplate: '<li>[{date}] {title}</li>',
+      dateFormat: 'ddd, DD MMM YYYY'
+    });
+  `;
+  <example('Custom Date Format', 'test', customDateFormatCode) />
+
+  $ const ezypayCode = `
+    $("#ezypay").rss("http://www.ezypay.co.nz/feed", {
+      limit: 5
+    });
+  `
+  <example('Ezypay', 'test', ezypayCode) />
+
+  $ const zoteroCode = `
+    $("#zotero").rss("https://api.zotero.org/groups/9097/items/top?start=0&limit=55&format=atom", {
+      entryTemplate: "<li>Title: {title}, Author: {author}, Year: {year}</li>",
+      tokens: {
+        year: function(entry, tokens) {
+          return new Date(entry.publishedDate).getFullYear();
+        }
+      }
+    });
+  `;
+  <example('Zotero', 'test', zoteroCode) />
+</div>

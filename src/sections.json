@@ -38,7 +38,7 @@
         "renderOnHome": false
     },
     {
-        "icon": "archive",
+        "icon": "cloud-upload",
         "title": "Release Tools",
         "path": "/release-tools",
         "description": "The Release Tools project is a collection of helpers that makes bumping and publishing npm packages a more pleasant experience.",
