@@ -2,7 +2,11 @@
   <div id=`${title.toLowerCase().replace(/\s/g, '-')}-example`>
     <h4>${title}</h4>
     <p>${description}</p>
+    
+    <p><u>Code</u></p>
     <pre><code.language-js>${code}</code></pre>
+    
+    <p><u>Preview</u></p>
     <div.jquery-rss-example id=title.toLowerCase().replace(/\s/g, '-') />
     <script>jQuery(function($) { 
       ${code}
@@ -36,7 +40,6 @@ style.less {
       .hide()
       .rss("http://feeds.feedburner.com/dawanda", {
         limit: 5,
-        effect: 'slideFastSynced',
         layoutTemplate: '{entries}',
         entryTemplate: '<h3>{title}</h3><div><p>{bodyPlain}</p></div>',
         error: console.log
@@ -46,7 +49,11 @@ style.less {
           .accordion({ heightStyle: 'content' });
       });
   `;
-  <example('Accordion', 'test', accordionCode) />
+  <example(
+    'Accordion', 
+    'In this example we are going to apply an accordian effect on the rendered RSS feed. Please note, that the effect is using the jQuery UI library which is not available by default.', 
+    accordionCode
+  ) />
 
   $ const customDateFormatCode = `
     $("#custom-date-format").rss("http://feeds.feedburner.com/dawanda", {
@@ -54,14 +61,11 @@ style.less {
       dateFormat: 'ddd, DD MMM YYYY'
     });
   `;
-  <example('Custom Date Format', 'test', customDateFormatCode) />
-
-  $ const ezypayCode = `
-    $("#ezypay").rss("http://www.ezypay.co.nz/feed", {
-      limit: 5
-    });
-  `
-  <example('Ezypay', 'test', ezypayCode) />
+  <example(
+    'Custom Date Format', 
+    'This example demonstrates a custom date format. Please note, that this option will only properly work if moment.js is available.', 
+    customDateFormatCode
+  ) />
 
   $ const zoteroCode = `
     $("#zotero").rss("https://api.zotero.org/groups/9097/items/top?start=0&limit=55&format=atom", {
@@ -73,5 +77,9 @@ style.less {
       }
     });
   `;
-  <example('Zotero', 'test', zoteroCode) />
+  <example(
+    'Zotero', 
+    'Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources. This example is going to use their API.', 
+    zoteroCode
+  ) />
 </div>
