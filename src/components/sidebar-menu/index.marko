@@ -3,7 +3,7 @@ import sections from '../../sections';
 
 $ {
   let html;
-  input.content.renderBody({ w: (h) => { html = h; } });
+  input.content.renderBody({ w: (h) => { html = html || h; } });
   const headlines = extractHeadlines(html);
 }
 
