@@ -9,7 +9,7 @@
         "icon": "rss",
         "title": "jquery.rss",
         "path": "/jquery-rss",
-        "description": "Feedr is a service for parsing RSS and Atom feeds. You just pass the URL of an RSS/Atom feed and the service will return the parsed feed as JSON. Feedr was originally designed as a drop-in replacement for Google's Feed API, which has been deprecated and taken offline on December 15th, 2016.",
+        "description": "jquery.rss is an easy-to-use RSS/Atom plugin for jquery with templating. It can be used to read a feed and transform it into a customizable piece of HTML.",
         "links": [
             {
                 "text": "Github",

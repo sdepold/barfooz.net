@@ -30,11 +30,17 @@ h1 {
 }
 
 h2 {
-  margin: -32px -32px 0 -32px;
+  margin: 0 -32px 0 -32px;
   font-size: 2rem;
   background-color: #eee;
   padding: 1em;
-  
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 332px;
+  right: 0;
+  z-index: 1000;
+
   &, i {
     font-weight:200;
     padding-right: 0.25em;
@@ -42,11 +48,10 @@ h2 {
 }
 
 h3 {
-  font-weight:200;
   margin-top:1.5em;
   margin-bottom:0.5em;
   font-size:1.5rem;
-  
+
   i {
     padding-right: 0.25em;
   }
@@ -94,4 +99,14 @@ li {
 pre[class*="language-"] > code {
   font-size: 12px;
   box-shadow: none;
+}
+
+.main {
+  section:first-of-type {
+    margin-top: 100px;
+  }
+}
+
+ins.adsbygoogle {
+  margin-top: 36px;
 }
